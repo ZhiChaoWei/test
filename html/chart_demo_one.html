@@ -7,8 +7,17 @@
 <script>
 $(function () {
     $('#container').highcharts({
+		plotOptions: {
+			series : {
+				events : {
+					legendItemClick : function(event){
+						return false;
+					}
+				}
+			}
+		},
 		exporting : {
-			enabled : false
+			enabled : true
 		},
         series: [{
             data: [1, 3, 2, 4, 5, 4, 6, 2, 3, 5, 6]
