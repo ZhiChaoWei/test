@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta charset = "utf-8">
+<script src = "../js/jquery-1.11.3.min.js"></script>
+<script src="../js/highcharts.js"></script>
+<script src="../js/exporting.js"></script>
+<script>
+$(function () {
+    $('#container').highcharts({
+		chart : {
+			type : 'pie'
+		},
+		plotOptions: {
+			pie : {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				dataLabels : {
+					enabled: true,
+					format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+				}
+			},
+			series : {
+				events : {
+					legendItemClick : function(event){
+						return true;
+					}
+				}
+			}
+		},
+		title : {
+			text : '2014 某网站各浏览器浏览量占比',
+			style : {
+				color : '#c40000'
+			}
+		},
+		subtitle : {
+			text : '数据仅供参考',
+		},
+		tooltip : {
+			headerFormat: '{series.name}<br>',
+			pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+		},
+		exporting : {
+			enabled : true
+		},
+        series: [{
+			name : '浏览器访问量占比',
+            data: [
+				['Firefox',   45.0],
+                ['IE',       26.8],
+				{
+					name : 'Chrome',
+					y : 12.8,
+					sliced : true,
+					selected : true
+				},
+				['Safari',    8.5],
+                ['Opera',     6.2],
+                ['其他',   0.7]
+			]
+        }
+		]
+    });
+});
+
+
+</script>
+</head>
+<body>
+<div id = "container" style="min-width:400px;height:400px"></div>
+
+</body>
+
+</html>
